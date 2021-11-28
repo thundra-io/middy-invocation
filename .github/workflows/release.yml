@@ -26,8 +26,6 @@ jobs:
         run: npm install
       - name: NPM Lint
         run: npm run lint
-      - name: NPM Build
-        run: npm run build
       - name: NPM Publish
         run: npm run release-${{ github.event.inputs.version_scale }}
         env:
