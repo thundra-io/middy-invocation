@@ -1,17 +1,16 @@
-let evt, ctx;
+let evt, ctx
 
 const event = () => {
-    return evt;
+    return evt
 }
 
 const context = () => {
-    return ctx;
+    return ctx
 }
 
 const invocationMiddleware = (opts = {}) => {
-
     const invocationMiddlewareBefore = async (request) => {
-        evt = request.event;
+        evt = request.event
         ctx = {
             functionVersion: request.context.functionVersion,
             functionName: request.context.functionName,
@@ -27,13 +26,13 @@ const invocationMiddleware = (opts = {}) => {
     }
 
     const invocationMiddlewareAfter = async (request) => {
-        evt = null;
-        ctx = null;
+        evt = null
+        ctx = null
     }
 
     const invocationMiddlewareOnError = async (request) => {
-        evt = null;
-        ctx = null;
+        evt = null
+        ctx = null
     }
 
     return {
@@ -41,10 +40,9 @@ const invocationMiddleware = (opts = {}) => {
         after: invocationMiddlewareAfter,
         onError: invocationMiddlewareOnError,
     }
-
 }
 
-module.exports = invocationMiddleware;
-module.exports.mw = invocationMiddleware;
-module.exports.event = event;
-module.exports.context = context;
+module.exports = invocationMiddleware
+module.exports.mw = invocationMiddleware
+module.exports.event = event
+module.exports.context = context
